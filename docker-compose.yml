@@ -1,0 +1,14 @@
+
+name: ovpn-proxy
+
+services:
+  nginx:
+    container_name: ${COMPOSE_PROJECT_NAME}-nginx
+    image: nginx:latest
+    network_mode: host
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ovpn-proxy.conf.template:/etc/nginx/templates/ovpn-proxy.conf.template:ro
+    environment:
+      LISTEN_PORT:
+      TARGET_HOST:

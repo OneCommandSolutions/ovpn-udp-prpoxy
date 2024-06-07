@@ -1,0 +1,12 @@
+stream {
+    upstream ovpn {
+        server ${TARGET_HOST};
+    }
+
+    server {
+        listen ${LISTEN_PORT} udp;
+        listen ${LISTEN_PORT};
+
+        proxy_pass ovpn;
+    }
+}
